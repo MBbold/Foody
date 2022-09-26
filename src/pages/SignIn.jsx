@@ -25,6 +25,8 @@ export const Login = () => {
     // e.preventDefault();
     try {
       setError("");
+      console.log(error);
+      console.log(loading);
       setLoading(true);
       await getLogIn(emailRef.current.value, passwordRef.current.value);
       navigate("/menu");

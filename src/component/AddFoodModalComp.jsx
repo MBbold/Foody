@@ -58,12 +58,10 @@ export const AddFoodModalComp = () => {
   const foodType = useRef();
 
   const foodDescription = useRef();
-  const foodPortion = "Порц 1"
   const foodImage = ''
   const recipeName = useRef();
   const recipeValue = useRef();
   const [recipeAddArr, setRecipeAddArr] = useState([]);
-  const foodRecipe = recipeAddArr;
 
 
   const recipeAdd = ()=>{

@@ -20,6 +20,7 @@ export const SingUp = () => {
       return setError("Password do not match");
     }
     setError("");
+    console.log(error);
     getSignUp(emailRef.current.value, passwordRef.current.value);
   };
   const currentURL = window.location.href;

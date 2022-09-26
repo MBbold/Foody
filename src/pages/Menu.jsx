@@ -7,7 +7,7 @@ import { Button, CircularProgress, Divider, Fab, Grid, Stack } from "@mui/materi
 import AddIcon from "@mui/icons-material/Add";
 import { AddFoodModalComp } from "../component/AddFoodModalComp";
 import { useAddFoodOpenModalContext } from "../contexts/AddFoodOpenModal";
-import { foodDatas } from "../data/foodData";
+// import { foodDatas } from "../data/foodData";
 import { UseFoodsDataContext } from "../contexts/FoodsDataContext";
 import { getFirebaseFoods } from "../firebase/firebaseConfig";
 import { useEffect } from "react";
@@ -41,7 +41,7 @@ export const FoodMenu = () => {
       setFoodsData([...data]);
     };
     getData();
-  }, []);
+  });
 
   console.log("foodsData", foodsData);
   return (
