@@ -3,7 +3,14 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import { Button, CircularProgress, Divider, Fab, Grid, Stack } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Divider,
+  Fab,
+  Grid,
+  Stack,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { AddFoodModalComp } from "../component/AddFoodModalComp";
 import { useAddFoodOpenModalContext } from "../contexts/AddFoodOpenModal";
@@ -41,7 +48,7 @@ export const FoodMenu = () => {
       setFoodsData([...data]);
     };
     getData();
-  });
+  }, []);
 
   console.log("foodsData", foodsData);
   return (
@@ -87,57 +94,59 @@ export const FoodMenu = () => {
       <Box sx={{ backgroundColor: "white.light", marginTop: "16px" }}>
         <Grid container spacing={2} columns={20} p={4}>
           {/* {!_.isEmpty([foodsData]) && <CircularProgress color="success"/>} */}
-          {!_.isEmpty([foodsData]) ? 
-          
-          _.map(foodsData, (element, index) => (
-            <Grid key={index} item xs={4} marginTop={10}>
-              <Box
-                sx={{
-                  backgroundColor: "white.main",
-                  borderRadius: "8px",
-                  position: "relative",
-                }}
-                p={2}
-              >
-                <img
-                  src={element.image}
-                  alt=""
-                  style={{
-                    position: "absolute",
-                    width: "120px",
-                    top: "-70px",
-                    left: "35%",
+          {!_.isEmpty([foodsData]) ? (
+            _.map(foodsData, (element, index) => (
+              <Grid key={index} item xs={4} marginTop={10}>
+                <Box
+                  sx={{
+                    backgroundColor: "white.main",
+                    borderRadius: "8px",
+                    position: "relative",
                   }}
-                />
-                <Box textAlign="center" sx={{ marginTop: "50px" }}>
-                  <Typography>{element.name}</Typography>
-                  <Typography sx={{ fontSize: "10px" }}>
-                    {element.portion}
-                  </Typography>
-                </Box>
-                <Stack
-                  direction="row"
-                  spacing={3}
-                  justifyContent="space-between"
-                  paddingTop={5}
+                  p={2}
                 >
-                  <Box flex={1}>{element.price}</Box>
-                  <Box
-                    flex={1}
-                    sx={{
-                      color: "addIcon.main",
-                      display: "flex",
-                      justifyContent: "flex-end",
+                  <img
+                    src={element.image}
+                    alt=""
+                    style={{
+                      position: "absolute",
+                      width: "120px",
+                      top: "-70px",
+                      left: "35%",
                     }}
-                  >
-                    <Fab color="" size="small">
-                      <AddIcon color="success" />
-                    </Fab>
+                  />
+                  <Box textAlign="center" sx={{ marginTop: "50px" }}>
+                    <Typography>{element.name}</Typography>
+                    <Typography sx={{ fontSize: "10px" }}>
+                      {element.portion}
+                    </Typography>
                   </Box>
-                </Stack>
-              </Box>
-            </Grid>
-          )): <CircularProgress color="success"/>}
+                  <Stack
+                    direction="row"
+                    spacing={3}
+                    justifyContent="space-between"
+                    paddingTop={5}
+                  >
+                    <Box flex={1}>{element.price}</Box>
+                    <Box
+                      flex={1}
+                      sx={{
+                        color: "addIcon.main",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Fab color="" size="small">
+                        <AddIcon color="success" />
+                      </Fab>
+                    </Box>
+                  </Stack>
+                </Box>
+              </Grid>
+            ))
+          ) : (
+            <CircularProgress color="success" />
+          )}
         </Grid>
         <AddFoodModalComp />
       </Box>
